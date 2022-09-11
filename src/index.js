@@ -4,9 +4,12 @@ const app = express();
 const nik = require('./router/nik');
 const kk = require('./router/kk');
 const mongoose = require('mongoose');
-const port = process.env.PORT;
+const cors = require('cors');
 
 mongoose.connect(process.env.MONGODB_URI);
+app.use(cors({
+    origin: process.env.CORS_URL,
+}));
 
 //TODO: implement CORS
 app.get('/', (req,res) => {
